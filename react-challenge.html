@@ -4,7 +4,10 @@
 
 To see this component, drag the file into the browser.
 
-HINT: Check the console in the browser developer tools for errors. -->
+HINT: Check the console in the browser developer tools for errors.
+1.Had to add react.frgament after render.
+2.Had to define handleMoodOptions
+3.Must put state when creating fuctnion and on the onclick button-->
 
 
 
@@ -33,13 +36,20 @@ HINT: Check the console in the browser developer tools for errors. -->
           }
         }
 
-        handleMoodOptions = () => {
+
+
+    handleMoodOptions = () => {
           let randomIndex = Math.floor(Math.random() * this.state.moods.length )
-          this.setState({ currentMood: moods[randomIndex] })
+          this.setState({ currentMood: this.state.moods[randomIndex] })
         }
 
         render(){
+          let {handleMoodOptions} = this.setState
+
+
           return(
+
+            <React.Fragment>
               <h1>Welcome to the Mood Meter App</h1>
 
               <h3>Mood Options:</h3>
@@ -48,10 +58,10 @@ HINT: Check the console in the browser developer tools for errors. -->
                 { this.state.currentMood }
               </div>
 
-              <button onClick={ handleMoodOptions }>
+              <button onClick={ this.handleMoodOptions }>
                 Click Here For Next Mood option
               </button>
-
+            </React.Fragment>
           )
         }
       }
